@@ -1,12 +1,10 @@
 // components/sections/ContactSection.tsx
 "use client";
 
-import { Box, Typography } from "@mui/material";
 import { ContactInfoItem } from "@/components/ui/contact-info-item";
 import { ServiceHighlightCard } from "@/components/ui/service-highlight-card";
 import { BookingForm } from "@/components/ui/booking-form";
 import { SectionHeader } from "@/components/ui/section-header";
-import { AppContainer } from "@/components/ui";
 import {
   defaultContactInfo,
   defaultServiceHighlights,
@@ -28,67 +26,73 @@ export function ContactSection({
   contactInfo = defaultContactInfo,
   serviceHighlights = defaultServiceHighlights,
 }: ContactSectionProps) {
-  const titleToShow = (title ?? "").trim() || "Ready to Start Your Nomad Journey?";
-  const subtitleToShow =
-    (subtitle ?? "").trim() ||
-    "Get in touch to book your workation or learn more about our premium services";
-
   return (
-    <Box
-      component="section"
+    <section
       id="contact"
-      sx={(theme) => ({
-        py: { xs: 6, md: 10 },
-        background: `linear-gradient(to bottom, ${theme.palette.action.hover}, ${theme.palette.background.default})`,
-      })}
+      style={{
+        background: "linear-gradient(to bottom, #E0F7F3, #FFF4E6)",
+        padding: "4rem 0",
+      }}
     >
-      <AppContainer>
-        <SectionHeader title={titleToShow} subtitle={subtitleToShow} />
+      <div className="container mx-auto px-4">
+        <SectionHeader title={title} subtitle={subtitle} />
 
-        <Box
-          sx={{
+        <div
+          style={{
             display: "grid",
-            gridTemplateColumns: { xs: "1fr", md: "1fr 1fr" },
-            gap: { xs: 3, md: 6 },
-            maxWidth: 1200,
-            mx: "auto",
+            gridTemplateColumns: "repeat(2, 1fr)",
+            gap: "3rem",
+            maxWidth: "1200px",
+            margin: "0 auto",
           }}
         >
           {/* === Левая колонка: Контактная информация === */}
-          <Box sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
-            <Box>
-              <Typography
-                component="h3"
-                variant="h5"
-                sx={{ fontWeight: 800, color: "text.primary", mb: 2 }}
+          <div
+            style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}
+          >
+            <div>
+              <h3
+                style={{
+                  fontSize: "1.5rem",
+                  fontWeight: "bold",
+                  color: "#2D5B4C",
+                  marginBottom: "1.5rem",
+                }}
               >
                 Get in Touch
-              </Typography>
-              <Box sx={{ display: "flex", flexDirection: "column", gap: 3 }}>
+              </h3>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "1.5rem",
+                }}
+              >
                 {contactInfo.map((item, index) => (
                   <ContactInfoItem key={index} {...item} />
                 ))}
-              </Box>
-            </Box>
+              </div>
+            </div>
 
             {/* === Блоки: Response Time и Global Support === */}
-            <Box
-              sx={{
+            <div
+              style={{
                 display: "grid",
-                gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr" },
-                gap: 2,
+                gridTemplateColumns: "repeat(2, 1fr)",
+                gap: "1rem",
               }}
             >
               {serviceHighlights.map((service, index) => (
                 <ServiceHighlightCard key={index} {...service} />
               ))}
-            </Box>
-          </Box>
+            </div>
+          </div>
 
           {/* === Правая колонка: Форма бронирования === */}
           <BookingForm />
-        </Box>
-      </AppContainer>
-    </Box>
+        </div>
+      </div>
+    </section>
   );
 }
+
