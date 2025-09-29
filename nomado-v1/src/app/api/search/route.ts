@@ -9,13 +9,15 @@ export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
 
   // 1. Получаем параметры
-  const lng = Number(searchParams.get("lng"));
-  const lat = Number(searchParams.get("lat"));
+  const lngParam = searchParams.get("lng");
+  const latParam = searchParams.get("lat");
+  const lng = lngParam !== null ? Number(lngParam) : NaN;
+  const lat = latParam !== null ? Number(latParam) : NaN;
   const maxDistance = Number(searchParams.get("max")) || 5000;
   const amenities = searchParams.getAll("amenity");
 
   // 2. Валидация координат
-  if (!lng || !lat || isNaN(lng) || isNaN(lat)) {
+  if (Number.isNaN(lng) || Number.isNaN(lat)) {
     return NextResponse.json(
       { success: false, error: "Некорректные координаты" },
       { status: 400 },
