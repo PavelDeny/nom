@@ -131,8 +131,8 @@ export function GalleryItemCard({
 
         {/* === Теги (только первые 2) === */}
         <div style={featuresContainerStyles}>
-          {item.features.slice(0, 2).map((feature, i) => (
-            <span key={i} style={featureStyles}>
+          {item.features.slice(0, 2).map((feature) => (
+            <span key={feature} style={featureStyles}>
               {feature}
             </span>
           ))}

@@ -20,9 +20,9 @@ export interface SearchResult {
 }
 
 export class SearchService {
-  private spaceRepo: { findMany: (query: unknown, opts?: unknown) => Promise<{ items: unknown[]; total: number }> };
+  private spaceRepo: { findMany: (query: unknown, opts?: { page?: number; pageSize?: number; sort?: Record<string, 1 | -1>; limit?: number; projection?: Record<string, 0 | 1> }) => Promise<{ items: unknown[]; total: number }> };
 
-  constructor(spaceRepo: { findMany: (query: unknown, opts?: unknown) => Promise<{ items: unknown[]; total: number }> }) {
+  constructor(spaceRepo: { findMany: (query: unknown, opts?: { page?: number; pageSize?: number; sort?: Record<string, 1 | -1>; limit?: number; projection?: Record<string, 0 | 1> }) => Promise<{ items: unknown[]; total: number }> }) {
     this.spaceRepo = spaceRepo;
   }
 
@@ -33,17 +33,17 @@ export class SearchService {
       const spaceRepo = await getRepo('Space', { preference: 'typeorm' });
 
       // Приводим тип репозитория к ожидаемому интерфейсу с методом findMany
-      const typedSpaceRepo: { findMany: (query: Record<string, unknown>, opts?: { page?: number; pageSize?: number; sort?: Record<string, 1 | -1> }) => Promise<{ items: unknown[]; total: number }> } = spaceRepo as { findMany: (query: Record<string, unknown>, opts?: { page?: number; pageSize?: number; sort?: Record<string, 1 | -1> }) => Promise<{ items: unknown[]; total: number }> };
+      const typedSpaceRepo: { findMany: (query: Record<string, unknown>, opts?: { page?: number; pageSize?: number; sort?: Record<string, 1 | -1>; limit?: number; projection?: Record<string, 0 | 1> }) => Promise<{ items: unknown[]; total: number }> } = spaceRepo as { findMany: (query: Record<string, unknown>, opts?: { page?: number; pageSize?: number; sort?: Record<string, 1 | -1>; limit?: number; projection?: Record<string, 0 | 1> }) => Promise<{ items: unknown[]; total: number }> };
 
       // Приводим репозиторий к ожидаемому интерфейсу с универсальными параметрами
       // Оборачиваем метод findMany, чтобы привести параметры к типу unknown
       const compatibleRepo = {
-        findMany: (query: unknown, opts?: unknown) => {
+        findMany: (query: unknown, opts?: { page?: number; pageSize?: number; sort?: Record<string, 1 | -1>; limit?: number; projection?: Record<string, 0 | 1> }) => {
           // typedSpaceRepo ожидает query как Record<string, unknown> и opts с определённой структурой
           // Здесь делаем приведение типов для совместимости
           return typedSpaceRepo.findMany(
             query as Record<string, unknown>,
-            opts as { page?: number; pageSize?: number; sort?: Record<string, 1 | -1> }
+            opts as { page?: number; pageSize?: number; sort?: Record<string, 1 | -1>; limit?: number; projection?: Record<string, 0 | 1> }
           );
         }
       };

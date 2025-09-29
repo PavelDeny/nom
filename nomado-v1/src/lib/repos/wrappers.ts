@@ -1,9 +1,17 @@
 // src/lib/repos/wrappers.ts
 import { ObjectId } from "mongodb";
 
+export interface IRepoFindManyOptions {
+  page?: number;
+  pageSize?: number;
+  sort?: Record<string, 1 | -1>;
+  limit?: number;
+  projection?: Record<string, 0 | 1>;
+}
+
 export interface IRepo<T> {
   create(input: Partial<T>): Promise<T>;
-  findMany(query?: Record<string, unknown>, opts?: { page?: number; pageSize?: number; sort?: Record<string, 1 | -1> }): Promise<{ items: T[]; total: number }>;
+  findMany(query?: Record<string, unknown>, opts?: IRepoFindManyOptions): Promise<{ items: T[]; total: number }>;
   findById(id: string): Promise<T | null>;
   updateById(id: string, updates: Partial<T>): Promise<T | null>;
   deleteById(id: string): Promise<boolean>;
@@ -35,10 +43,16 @@ export function wrapMongooseModel<T>(model: unknown): IRepo<T> {
     async create(input: Partial<T>): Promise<T> {
       return mongooseModel.create(input);
     },
-    async findMany(query: Record<string, unknown> = {}, opts: { page?: number; pageSize?: number; sort?: Record<string, 1 | -1> } = {}): Promise<{ items: T[]; total: number }> {
+    async findMany(query: Record<string, unknown> = {}, opts: IRepoFindManyOptions = {}): Promise<{ items: T[]; total: number }> {
+      const hasLimit = typeof opts.limit === "number" && opts.limit! > 0;
       const page = Number(opts.page || 1);
-      const pageSize = Number(opts.pageSize || 20);
-      let q = mongooseModel.find(query).skip((page - 1) * pageSize).limit(pageSize);
+      const pageSize = Number((hasLimit ? opts.limit : opts.pageSize) || 20);
+      // apply projection if provided
+      const projection = opts.projection;
+      // use 'as any' to call find with projection in our loose typing stub
+      let q = (mongooseModel.find as unknown as (query: Record<string, unknown>, proj?: Record<string, 0 | 1>) => ReturnType<typeof mongooseModel.find>)(query, projection)
+        .skip((page - 1) * pageSize)
+        .limit(pageSize);
       // Проверяем, был ли передан параметр сортировки, и если да — применяем его
       // Проверяем, был ли передан параметр сортировки, и если да — применяем его
       // Для корректной типизации, проверяем, что у q есть метод sort
@@ -48,8 +62,8 @@ export function wrapMongooseModel<T>(model: unknown): IRepo<T> {
       }
       // Выполняем запрос на получение элементов и подсчёт общего количества документов параллельно
       const [items, total] = await Promise.all([
-        q.exec(), // Получаем элементы с учётом пагинации и сортировки
-        mongooseModel.countDocuments(query), // Получаем общее количество документов по фильтру
+        q.exec(),
+        mongooseModel.countDocuments(query),
       ]);
       // Возвращаем результат в виде объекта с массивом элементов и общим количеством
       return { items, total };
@@ -96,17 +110,14 @@ export function wrapTypeormRepo<T>(repo: unknown): IRepo<T> {
       const entity = typeormRepo.create(input);
       return typeormRepo.save(entity);
     },
-    async findMany(query: Record<string, unknown> = {}, opts: { page?: number; pageSize?: number; sort?: Record<string, 1 | -1> } = {}): Promise<{ items: T[]; total: number }> {
+    async findMany(query: Record<string, unknown> = {}, opts: IRepoFindManyOptions = {}): Promise<{ items: T[]; total: number }> {
       const where = query;
-      const skip = opts.page && opts.pageSize ? (opts.page - 1) * opts.pageSize : undefined;
-      const take = opts.pageSize;
+      const usingLimit = typeof opts.limit === "number" && opts.limit! > 0;
+      const skip = usingLimit ? undefined : (opts.page && opts.pageSize ? (opts.page - 1) * opts.pageSize : undefined);
+      const take = usingLimit ? opts.limit : opts.pageSize;
       const order = opts.sort;
-      const [items, total] = await typeormRepo.findAndCount({
-        where,
-        skip,
-        take,
-        order,
-      });
+      // Note: projection is not supported in TypeORM MongoRepository via findAndCount reliably; ignoring if provided
+      const [items, total] = await typeormRepo.findAndCount({ where, skip, take, order });
       return { items, total };
     },
     async findById(id: string): Promise<T | null> {

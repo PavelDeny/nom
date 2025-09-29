@@ -242,9 +242,9 @@ export function Footer({
               Locations
             </h4>
             <ul style={{ listStyle: "none", paddingLeft: "0", margin: 0 }}>
-              {locations.map((location, index) => (
+              {locations.map((location) => (
                 <li
-                  key={index}
+                  key={`${location.flag}-${location.text}`}
                   style={{
                     margin: "0.5rem 0",
                     display: "flex",
@@ -274,8 +274,8 @@ export function Footer({
               Services
             </h4>
             <ul style={{ listStyle: "none", paddingLeft: "0", margin: 0 }}>
-              {services.map((service, index) => (
-                <li key={index} style={{ margin: "0.5rem 0" }}>
+              {services.map((service) => (
+                <li key={service} style={{ margin: "0.5rem 0" }}>
                   <span style={{ color: "#A8D5BA", fontSize: "0.875rem" }}>
                     {service}
                   </span>
@@ -297,8 +297,8 @@ export function Footer({
               Company
             </h4>
             <ul style={{ listStyle: "none", paddingLeft: "0", margin: 0 }}>
-              {companyLinks.map((link, index) => (
-                <li key={index} style={{ margin: "0.5rem 0" }}>
+              {companyLinks.map((link) => (
+                <li key={link} style={{ margin: "0.5rem 0" }}>
                   <span style={{ color: "#A8D5BA", fontSize: "0.875rem" }}>
                     {link}
                   </span>
