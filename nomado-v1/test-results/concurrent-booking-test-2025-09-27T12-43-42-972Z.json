@@ -1,0 +1,113 @@
+{
+  "timestamp": "2025-09-27T12:43:42.972Z",
+  "testConfig": {
+    "targetUrl": "http://localhost:3000/api/bookings",
+    "concurrentRequests": 10,
+    "payload": {
+      "userId": "507f1f77bcf86cd799439011",
+      "spaceId": "507f1f77bcf86cd799439012",
+      "unitId": "507f1f77bcf86cd799439013",
+      "startAt": "2025-09-28T10:00:00.000Z",
+      "endAt": "2025-09-28T12:00:00.000Z",
+      "slot": {
+        "startAt": "2025-09-28T10:00:00.000Z",
+        "endAt": "2025-09-28T12:00:00.000Z",
+        "available": true
+      },
+      "durationMinutes": 120,
+      "type": "hourly",
+      "price": 50,
+      "currency": "USD",
+      "status": "pending"
+    }
+  },
+  "executionTime": 10122,
+  "statistics": {
+    "total": 10,
+    "successful": 0,
+    "conflicts": 0,
+    "errors": 10,
+    "successRate": "0.0%",
+    "conflictRate": "0.0%",
+    "errorRate": "100.0%"
+  },
+  "responseTimes": {
+    "average": 10062,
+    "min": 10050,
+    "max": 10117,
+    "p50": 10058,
+    "p95": 10117
+  },
+  "responses": [
+    {
+      "requestId": 1,
+      "status": 0,
+      "responseTime": 10117,
+      "error": "Request timeout",
+      "timestamp": "2025-09-27T12:43:42.797Z"
+    },
+    {
+      "requestId": 2,
+      "status": 0,
+      "responseTime": 10060,
+      "error": "Request timeout",
+      "timestamp": "2025-09-27T12:43:42.799Z"
+    },
+    {
+      "requestId": 3,
+      "status": 0,
+      "responseTime": 10060,
+      "error": "Request timeout",
+      "timestamp": "2025-09-27T12:43:42.800Z"
+    },
+    {
+      "requestId": 4,
+      "status": 0,
+      "responseTime": 10059,
+      "error": "Request timeout",
+      "timestamp": "2025-09-27T12:43:42.800Z"
+    },
+    {
+      "requestId": 5,
+      "status": 0,
+      "responseTime": 10058,
+      "error": "Request timeout",
+      "timestamp": "2025-09-27T12:43:42.800Z"
+    },
+    {
+      "requestId": 6,
+      "status": 0,
+      "responseTime": 10055,
+      "error": "Request timeout",
+      "timestamp": "2025-09-27T12:43:42.800Z"
+    },
+    {
+      "requestId": 7,
+      "status": 0,
+      "responseTime": 10055,
+      "error": "Request timeout",
+      "timestamp": "2025-09-27T12:43:42.800Z"
+    },
+    {
+      "requestId": 8,
+      "status": 0,
+      "responseTime": 10053,
+      "error": "Request timeout",
+      "timestamp": "2025-09-27T12:43:42.800Z"
+    },
+    {
+      "requestId": 9,
+      "status": 0,
+      "responseTime": 10053,
+      "error": "Request timeout",
+      "timestamp": "2025-09-27T12:43:42.801Z"
+    },
+    {
+      "requestId": 10,
+      "status": 0,
+      "responseTime": 10050,
+      "error": "Request timeout",
+      "timestamp": "2025-09-27T12:43:42.802Z"
+    }
+  ]
+}

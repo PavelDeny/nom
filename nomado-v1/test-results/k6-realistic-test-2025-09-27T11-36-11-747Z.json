@@ -1,0 +1,54 @@
+{
+  "timestamp": "2025-09-27T11:36:11.630Z",
+  "environment": "staging",
+  "targetUrl": "https://staging.nomado-breeze.com",
+  "testDuration": "70s",
+  "vus": 10,
+  "metrics": {
+    "http_req_duration": {
+      "p50": "11.00",
+      "p95": "26.00",
+      "p99": "53.00",
+      "avg": "12.70",
+      "min": "1.00",
+      "max": "434.00"
+    },
+    "http_req_failed": {
+      "rate": "100.00%",
+      "count": 3930
+    },
+    "http_reqs": {
+      "total": 3930,
+      "rate": "56.04"
+    },
+    "search_latency": {
+      "p50": "0.00",
+      "p95": "0.00",
+      "p99": "0.00",
+      "avg": "0.00"
+    },
+    "booking_latency": {
+      "p50": "0.00",
+      "p95": "0.00",
+      "p99": "0.00",
+      "avg": "0.00"
+    }
+  },
+  "thresholds": {
+    "http_req_duration": {
+      "threshold": "p(95)<2000",
+      "passed": true,
+      "value": "26.00ms"
+    },
+    "http_req_failed": {
+      "threshold": "rate<0.1",
+      "passed": false,
+      "value": "100.00%"
+    },
+    "search_latency": {
+      "threshold": "p(95)<1500",
+      "passed": true,
+      "value": "0.00ms"
+    }
+  }
+}

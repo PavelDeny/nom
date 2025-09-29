@@ -1,0 +1,17 @@
+{
+  "jsc": {
+    "target": "es2020",
+    "transform": {
+      "react": {
+        "runtime": "automatic",
+        "useBuiltins": true,
+        "refresh": false
+      }
+    }
+  },
+  "module": {
+    "type": "es6"
+  }
+}
+
+

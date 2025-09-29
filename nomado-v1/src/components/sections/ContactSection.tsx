@@ -1,0 +1,97 @@
+// components/sections/ContactSection.tsx
+"use client";
+
+import { ContactInfoItem } from "@/components/ui/contact-info-item";
+import { ServiceHighlightCard } from "@/components/ui/service-highlight-card";
+import { BookingForm } from "@/components/ui/booking-form";
+import { SectionHeader } from "@/components/ui/section-header";
+import {
+  defaultContactInfo,
+  defaultServiceHighlights,
+  type ContactInfo,
+  type ServiceHighlight,
+} from "@/lib/data/contact-data";
+
+export interface ContactSectionProps {
+  title?: string;
+  subtitle?: string;
+  contactInfo?: ContactInfo[];
+  serviceHighlights?: ServiceHighlight[];
+}
+
+// === Компонент ===
+export function ContactSection({
+  title = "Ready to Start Your Nomad Journey?",
+  subtitle = "Get in touch to book your workation or learn more about our premium services",
+  contactInfo = defaultContactInfo,
+  serviceHighlights = defaultServiceHighlights,
+}: ContactSectionProps) {
+  return (
+    <section
+      id="contact"
+      style={{
+        background: "linear-gradient(to bottom, #E0F7F3, #FFF4E6)",
+        padding: "4rem 0",
+      }}
+    >
+      <div className="container mx-auto px-4">
+        <SectionHeader title={title} subtitle={subtitle} />
+
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(2, 1fr)",
+            gap: "3rem",
+            maxWidth: "1200px",
+            margin: "0 auto",
+          }}
+        >
+          {/* === Левая колонка: Контактная информация === */}
+          <div
+            style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}
+          >
+            <div>
+              <h3
+                style={{
+                  fontSize: "1.5rem",
+                  fontWeight: "bold",
+                  color: "#2D5B4C",
+                  marginBottom: "1.5rem",
+                }}
+              >
+                Get in Touch
+              </h3>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "1.5rem",
+                }}
+              >
+                {contactInfo.map((item, index) => (
+                  <ContactInfoItem key={index} {...item} />
+                ))}
+              </div>
+            </div>
+
+            {/* === Блоки: Response Time и Global Support === */}
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(2, 1fr)",
+                gap: "1rem",
+              }}
+            >
+              {serviceHighlights.map((service, index) => (
+                <ServiceHighlightCard key={index} {...service} />
+              ))}
+            </div>
+          </div>
+
+          {/* === Правая колонка: Форма бронирования === */}
+          <BookingForm />
+        </div>
+      </div>
+    </section>
+  );
+}

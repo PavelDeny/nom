@@ -1,0 +1,153 @@
+{
+  "timestamp": "2025-09-27T11:14:07.947Z",
+  "environment": "development",
+  "apiUrl": "http://localhost:3000",
+  "summary": {
+    "total": 5,
+    "passed": 1,
+    "failed": 4,
+    "successRate": "20.0%"
+  },
+  "tests": [
+    {
+      "test": "create_user",
+      "result": {
+        "url": "http://localhost:3000/api/users",
+        "method": "POST",
+        "status": 500,
+        "statusText": "Internal Server Error",
+        "headers": {
+          "connection": "keep-alive",
+          "date": "Sat, 27 Sep 2025 11:13:42 GMT",
+          "keep-alive": "timeout=5",
+          "transfer-encoding": "chunked",
+          "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch"
+        },
+        "body": "",
+        "timestamp": "2025-09-27T11:13:42.553Z"
+      },
+      "expected": {
+        "status": [
+          200,
+          201
+        ]
+      },
+      "passed": false
+    },
+    {
+      "test": "geo_search",
+      "result": {
+        "url": "http://localhost:3000/api/search?location=37.7749%2C-122.4194&radius=10&limit=10",
+        "method": "GET",
+        "status": 500,
+        "statusText": "Internal Server Error",
+        "headers": {
+          "connection": "keep-alive",
+          "date": "Sat, 27 Sep 2025 11:13:44 GMT",
+          "keep-alive": "timeout=5",
+          "transfer-encoding": "chunked",
+          "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch"
+        },
+        "body": "",
+        "timestamp": "2025-09-27T11:13:44.603Z"
+      },
+      "expected": {
+        "status": [
+          200
+        ]
+      },
+      "passed": false
+    },
+    {
+      "test": "create_booking_happy",
+      "result": {
+        "url": "http://localhost:3000/api/bookings",
+        "method": "POST",
+        "status": 400,
+        "statusText": "Bad Request",
+        "headers": {
+          "connection": "keep-alive",
+          "content-type": "application/json",
+          "date": "Sat, 27 Sep 2025 11:13:46 GMT",
+          "keep-alive": "timeout=5",
+          "transfer-encoding": "chunked",
+          "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch"
+        },
+        "body": {
+          "success": false,
+          "error": "Validation failed",
+          "details": [
+            "Missing required fields: startAt, endAt, slot"
+          ]
+        },
+        "timestamp": "2025-09-27T11:13:46.937Z"
+      },
+      "expected": {
+        "status": [
+          200,
+          201
+        ]
+      },
+      "passed": false
+    },
+    {
+      "test": "create_booking_conflict",
+      "result": {
+        "url": "http://localhost:3000/api/bookings",
+        "method": "POST",
+        "status": 400,
+        "statusText": "Bad Request",
+        "headers": {
+          "connection": "keep-alive",
+          "content-type": "application/json",
+          "date": "Sat, 27 Sep 2025 11:13:47 GMT",
+          "keep-alive": "timeout=5",
+          "transfer-encoding": "chunked",
+          "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch"
+        },
+        "body": {
+          "success": false,
+          "error": "Validation failed",
+          "details": [
+            "Missing required fields: startAt, endAt, slot"
+          ]
+        },
+        "timestamp": "2025-09-27T11:13:47.561Z"
+      },
+      "expected": {
+        "status": [
+          409
+        ]
+      },
+      "passed": false
+    },
+    {
+      "test": "not_found_page",
+      "result": {
+        "url": "http://localhost:3000/api/non-existent-endpoint",
+        "method": "GET",
+        "status": 404,
+        "statusText": "Not Found",
+        "headers": {
+          "cache-control": "no-store, must-revalidate",
+          "connection": "keep-alive",
+          "content-encoding": "gzip",
+          "content-type": "text/html; charset=utf-8",
+          "date": "Sat, 27 Sep 2025 11:14:07 GMT",
+          "keep-alive": "timeout=5",
+          "transfer-encoding": "chunked",
+          "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Accept-Encoding",
+          "x-powered-by": "Next.js"
+        },
+        "body": "<!DOCTYPE html><html lang=\"en\"><head><meta charSet=\"utf-8\"/><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/><link rel=\"stylesheet\" href=\"/_next/static/chunks/%5Broot-of-the-server%5D__040b0825._.css\" data-precedence=\"next_static/chunks/[root-of-the-server]__040b0825._.css\"/><link rel=\"preload\" as=\"script\" fetchPriority=\"low\" href=\"/_next/static/chunks/%5Bturbopack%5D_browser_dev_hmr-client_hmr-client_ts_4e3b0bdd._.js\"/><script src=\"/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1e674e59._.js\" async=\"\"></script><script src=\"/_next/static/chunks/node_modules_next_dist_compiled_next-devtools_index_a9cb0712.js\" async=\"\"></script><script src=\"/_next/static/chunks/node_modules_next_dist_compiled_5150ccfd._.js\" async=\"\"></script><script src=\"/_next/static/chunks/node_modules_next_dist_client_cf1d9188._.js\" async=\"\"></script><script src=\"/_next/static/chunks/node_modules_next_dist_b0daae9a._.js\" async=\"\"></script><script src=\"/_next/static/chunks/4e2c9_%40swc_helpers_cjs_2b52ba32._.js\" async=\"\"></script><script src=\"/_next/static/chunks/_a0ff3932._.js\" async=\"\"></script><script src=\"/_next/static/chunks/turbopack-_3fb52da9._.js\" async=\"\"></script><script src=\"/_next/static/chunks/node_modules_a4e9bb56._.js\" async=\"\"></script><script src=\"/_next/static/chunks/src_d65ea02c._.js\" async=\"\"></script><script src=\"/_next/static/chunks/src_app_layout_tsx_f8182b1e._.js\" async=\"\"></script><script src=\"/_next/static/chunks/node_modules_28fd43de._.js\" async=\"\"></script><script src=\"/_next/static/chunks/src_app_error_tsx_627a0d75._.js\" async=\"\"></script><script src=\"/_next/static/chunks/src_app_error_tsx_31e85dbf._.js\" async=\"\"></script><script src=\"/_next/static/chunks/node_modules_cba47906._.js\" async=\"\"></script><script src=\"/_next/static/chunks/src_app_not-found_tsx_c19c9edf._.js\" async=\"\"></script><script src=\"/_next/static/chunks/src_app_not-found_tsx_31e85dbf._.js\" async=\"\"></script><meta name=\"robots\" content=\"noindex\"/><meta name=\"next-size-adjust\" content=\"\"/><title>Nomado Breeze</title><meta name=\"description\" content=\"Work where the breeze takes you\"/><script src=\"/_next/static/chunks/node_modules_next_dist_build_polyfills_polyfill-nomodule.js\" noModule=\"\"></script></head><body class=\"geist_deef94d5-module__Sms4YG__variable geist_mono_8d43a2aa-module__8Li5zG__variable antialiased\"><div hidden=\"\"><!--$--><!--/$--></div><script src=\"/_next/static/chunks/%5Bturbopack%5D_browser_dev_hmr-client_hmr-client_ts_4e3b0bdd._.js\" id=\"_R_\" async=\"\"></script><script>(self.__next_f=self.__next_f||[]).push([0])</script><script>self.__next_f.push([1,\"5:I[\\\"[project]/node_modules/next/dist/next-devtools/userspace/app/segment-explorer-node.js [app-client] (ecmascript)\\\",[\\\"/_next/static/chunks/node_modules_a4e9bb56._.js\\\",\\\"/_next/static/chunks/src_d65ea02c._.js\\\",\\\"/_next/static/chunks/src_app_layout_tsx_f8182b1e._.js\\\"],\\\"SegmentViewNode\\\"]\\n7:\\\"$Sreact.fragment\\\"\\n17:I[\\\"[project]/src/components/ThemeProviderWrapper.tsx [app-client] (ecmascript)\\\",[\\\"/_next/static/chunks/node_modules_a4e9bb56._.js\\\",\\\"/_next/static/chunks/src_d65ea02c._.js\\\",\\\"/_next/static/chunks/src_app_layout_tsx_f8182b1e._.js\\\"],\\\"ThemeProviderWrapper\\\"]\\n19:I[\\\"[project]/node_modules/next/dist/client/components/layout-router.js [app-client] (ecmascript)\\\",[\\\"/_next/static/chunks/node_modules_a4e9bb56._.js\\\",\\\"/_next/static/chunks/src_d65ea02c._.js\\\",\\\"/_next/static/chunks/src_app_layout_tsx_f8182b1e._.js\\\"],\\\"default\\\"]\\n1a:I[\\\"[project]/src/app/error.tsx [app-client] (ecmascript)\\\",[\\\"/_next/static/chunks/node_modules_a4e9bb56._.js\\\",\\\"/_next/static/chunks/src_d65ea02c._.js\\\",\\\"/_next/static/chunks/src_app_layout_tsx_f8182b1e._.js\\\",\\\"/_next/static/chunks/node_modules_28fd43de._.js\\\",\\\"/_next/static/chunks/src_app_error_tsx_627a0d75._.js\\\",\\\"/_next/static/chunks/src_app_error_tsx_31e85dbf._.js\\\"],\\\"default\\\"]\\n20:I[\\\"[project]/node_modules/next/dist/client/components/render-from-template-context.js [app-client] (ecmascript)\\\",[\\\"/_next/static/chunks/node_modules_a4e9bb56._.js\\\",\\\"/_next/static/chunks/src_d65ea02c._.js\\\",\\\"/_next/static/chunks/src_app_layout_tsx_f8182b1e._.js\\\"],\\\"default\\\"]\\n23:I[\\\"[project]/src/app/not-found.tsx [app-client] (ecmascript)\\\",[\\\"/_next/static/chunks/node_modules_a4e9bb56._.js\\\",\\\"/_next/static/chunks/src_d65ea02c._.js\\\",\\\"/_next/static/chunks/src_app_layout_tsx_f8182b1e._.js\\\",\\\"/_next/static/chunks/node_modules_cba47906._.js\\\",\\\"/_next/static/chunks/src_app_not-found_tsx_c19c9edf._.js\\\",\\\"/_next/static/chunks/src_app_not-found_tsx_31e85dbf._.js\\\"],\\\"default\\\"]\\n2c:I[\\\"[project]/node_modules/next/dist/client/components/client-page.js [app-client] (ecmascript)\\\",[\\\"/_next/static/chunks/node_modules_a4e9bb56._.js\\\",\\\"/_next/static/chunks/sr\"])</script><script>self.__next_f.push([1,\"c_d65ea02c._.js\\\",\\\"/_next/static/chunks/src_app_layout_tsx_f8182b1e._.js\\\"],\\\"ClientPageRoot\\\"]\\n31:I[\\\"[project]/node_modules/next/dist/lib/framework/boundary-components.js [app-client] (ecmascript)\\\",[\\\"/_next/static/chunks/node_modules_a4e9bb56._.js\\\",\\\"/_next/static/chunks/src_d65ea02c._.js\\\",\\\"/_next/static/chunks/src_app_layout_tsx_f8182b1e._.js\\\"],\\\"OutletBoundary\\\"]\\n38:I[\\\"[project]/node_modules/next/dist/client/components/metadata/async-metadata.js [app-client] (ecmascript)\\\",[\\\"/_next/static/chunks/node_modules_a4e9bb56._.js\\\",\\\"/_next/static/chunks/src_d65ea02c._.js\\\",\\\"/_next/static/chunks/src_app_layout_tsx_f8182b1e._.js\\\"],\\\"AsyncMetadataOutlet\\\"]\\n41:I[\\\"[project]/node_modules/next/dist/lib/framework/boundary-components.js [app-client] (ecmascript)\\\",[\\\"/_next/static/chunks/node_modules_a4e9bb56._.js\\\",\\\"/_next/static/chunks/src_d65ea02c._.js\\\",\\\"/_next/static/chunks/src_app_layout_tsx_f8182b1e._.js\\\"],\\\"ViewportBoundary\\\"]\\n48:I[\\\"[project]/node_modules/next/dist/lib/framework/boundary-components.js [app-client] (ecmascript)\\\",[\\\"/_next/static/chunks/node_modules_a4e9bb56._.js\\\",\\\"/_next/static/chunks/src_d65ea02c._.js\\\",\\\"/_next/static/chunks/src_app_layout_tsx_f8182b1e._.js\\\"],\\\"MetadataBoundary\\\"]\\n4d:\\\"$Sreact.suspense\\\"\\n51:I[\\\"[project]/node_modules/next/dist/client/components/builtin/global-error.js [app-client] (ecmascript)\\\",[\\\"/_next/static/chunks/node_modules_a4e9bb56._.js\\\",\\\"/_next/static/chunks/src_d65ea02c._.js\\\",\\\"/_next/static/chunks/src_app_layout_tsx_f8182b1e._.js\\\"],\\\"default\\\"]\\n:HL[\\\"/_next/static/chunks/%5Broot-of-the-server%5D__040b0825._.css\\\",\\\"style\\\"]\\n:N1758971647403.5105\\n3:\\\"$EObject.defineProperty(()=\\u003e{ctx.componentMod.preloadStyle(fullHref,ctx.renderOpts.crossOrigin,ctx.nonce)},\\\\\\\"name\\\\\\\",{value:\\\\\\\"\\\\\\\"})\\\"\\n2:{\\\"name\\\":\\\"Preloads\\\",\\\"key\\\":null,\\\"env\\\":\\\"Server\\\",\\\"stack\\\":[],\\\"props\\\":{\\\"preloadCallbacks\\\":[\\\"$3\\\"]}}\\n4:[]\\n6:[]\\n8:[[\\\"Array.map\\\",\\\"\\\",0,0,0,0,false]]\\n9:[[\\\"Array.map\\\",\\\"\\\",0,0,0,0,false]]\\na:[[\\\"Array.map\\\",\\\"\\\",0,0,0,0,false]]\\nb:[[\\\"Array.map\\\",\\\"\\\",0,0,0,0,false]]\\ne:I[\\\"[project]/node_modules/next/dist/client/components/layout-router.js [app-client] (ecmas\"])</script><script>self.__next_f.push([1,\"cript)\\\",[\\\"/_next/static/chunks/node_modules_a4e9bb56._.js\\\",\\\"/_next/static/chunks/src_d65ea02c._.js\\\",\\\"/_next/static/chunks/src_app_layout_tsx_f8182b1e._.js\\\"],\\\"default\\\"]\\n10:I[\\\"[project]/src/app/error.tsx [app-client] (ecmascript)\\\",[\\\"/_next/static/chunks/node_modules_a4e9bb56._.js\\\",\\\"/_next/static/chunks/src_d65ea02c._.js\\\",\\\"/_next/static/chunks/src_app_layout_tsx_f8182b1e._.js\\\",\\\"/_next/static/chunks/node_modules_28fd43de._.js\\\",\\\"/_next/static/chunks/src_app_error_tsx_627a0d75._.js\\\",\\\"/_next/static/chunks/src_app_error_tsx_31e85dbf._.js\\\"],\\\"default\\\"]\\n11:{\\\"type\\\":\\\"error\\\",\\\"pagePath\\\":\\\"error.tsx\\\",\\\"children\\\":[]}\\n12:[[\\\"Function.all\\\",\\\"\\\",0,0,0,0,true]]\\nf:{\\\"parallelRouterKey\\\":\\\"children\\\",\\\"error\\\":\\\"$10\\\",\\\"errorStyles\\\":[\\\"$\\\",\\\"$L5\\\",null,\\\"$11\\\",null,\\\"$12\\\",0],\\\"errorScripts\\\":\\\"$Y\\\",\\\"template\\\":\\\"$Y\\\",\\\"templateStyles\\\":\\\"$undefined\\\",\\\"templateScripts\\\":\\\"$undefined\\\",\\\"notFound\\\":\\\"$Y\\\",\\\"forbidden\\\":\\\"$undefined\\\",\\\"unauthorized\\\":\\\"$undefined\\\",\\\"segmentViewBoundaries\\\":\\\"$Y\\\"}\\n13:[[\\\"Function.all\\\",\\\"\\\",0,0,0,0,true]]\\nd:{\\\"name\\\":\\\"RootLayout\\\",\\\"key\\\":null,\\\"env\\\":\\\"Server\\\",\\\"stack\\\":[],\\\"props\\\":{\\\"children\\\":[\\\"$\\\",\\\"$Le\\\",null,\\\"$f\\\",null,\\\"$13\\\",1],\\\"params\\\":\\\"$Y\\\"}}\\n14:[[\\\"RootLayout\\\",\\\"E:\\\\\\\\__projects\\\\\\\\nomado-breeze\\\\\\\\nomado-v1\\\\\\\\.next\\\\\\\\server\\\\\\\\chunks\\\\\\\\ssr\\\\\\\\[root-of-the-server]__c9744e19._.js\\\",118,263,117,1,false]]\\n15:[[\\\"RootLayout\\\",\\\"E:\\\\\\\\__projects\\\\\\\\nomado-breeze\\\\\\\\nomado-v1\\\\\\\\.next\\\\\\\\server\\\\\\\\chunks\\\\\\\\ssr\\\\\\\\[root-of-the-server]__c9744e19._.js\\\",121,270,117,1,false]]\\n16:[[\\\"RootLayout\\\",\\\"E:\\\\\\\\__projects\\\\\\\\nomado-breeze\\\\\\\\nomado-v1\\\\\\\\.next\\\\\\\\server\\\\\\\\chunks\\\\\\\\ssr\\\\\\\\[root-of-the-server]__c9744e19._.js\\\",124,274,117,1,false]]\\n18:[[\\\"Function.all\\\",\\\"\\\",0,0,0,0,true]]\\n1b:[[\\\"Function.all\\\",\\\"\\\",0,0,0,0,true]]\\n1c:[[\\\"Array.map\\\",\\\"\\\",0,0,0,0,false]]\\n1d:[[\\\"Array.map\\\",\\\"\\\",0,0,0,0,false]]\\n1e:[[\\\"Array.map\\\",\\\"\\\",0,0,0,0,false]]\\n1f:[[\\\"Function.all\\\",\\\"\\\",0,0,0,0,true]]\\n21:[]\\n22:[]\\n24:[[\\\"Function.all\\\",\\\"\\\",0,0,0,0,true]]\\n25:[[\\\"Function.all\\\",\\\"\\\",0,0,0,0,true]]\\n26:[[\\\"Function.all\\\",\\\"\\\",0,0,0,0,true]]\\n27:[[\\\"Function.all\\\",\\\"\\\",0,0,0,0,true],[\\\"Function.all\\\",\\\"\\\",0,0,0,0,true]]\\n28:[[\\\"Function.all\\\",\\\"\\\",0,0,0,0,true],[\\\"Function.all\\\",\\\"\\\",0,0,0,0,true]]\\n29:[[\\\"F\"])</script><script>self.__next_f.push([1,\"unction.all\\\",\\\"\\\",0,0,0,0,true],[\\\"Function.all\\\",\\\"\\\",0,0,0,0,true]]\\n2a:[[\\\"Function.all\\\",\\\"\\\",0,0,0,0,true],[\\\"Function.all\\\",\\\"\\\",0,0,0,0,true]]\\n2b:[[\\\"Function.all\\\",\\\"\\\",0,0,0,0,true],[\\\"Function.all\\\",\\\"\\\",0,0,0,0,true]]\\n2d:[[\\\"Array.map\\\",\\\"\\\",0,0,0,0,false],[\\\"Array.map\\\",\\\"\\\",0,0,0,0,false],[\\\"Function.all\\\",\\\"\\\",0,0,0,0,true]]\\n2e:[[\\\"Array.map\\\",\\\"\\\",0,0,0,0,false],[\\\"Array.map\\\",\\\"\\\",0,0,0,0,false],[\\\"Function.all\\\",\\\"\\\",0,0,0,0,true]]\\n2f:[[\\\"Array.map\\\",\\\"\\\",0,0,0,0,false],[\\\"Array.map\\\",\\\"\\\",0,0,0,0,false],[\\\"Function.all\\\",\\\"\\\",0,0,0,0,true]]\\n30:[[\\\"Function.all\\\",\\\"\\\",0,0,0,0,true],[\\\"Function.all\\\",\\\"\\\",0,0,0,0,true]]\\n34:\\\"$EObject.defineProperty(async function getViewportReady() {\\\\n        await viewport();\\\\n        return undefined;\\\\n    },\\\\\\\"name\\\\\\\",{value:\\\\\\\"getViewportReady\\\\\\\"})\\\"\\n33:{\\\"name\\\":\\\"__next_outlet_boundary__\\\",\\\"key\\\":null,\\\"env\\\":\\\"Server\\\",\\\"stack\\\":[[\\\"Function.all\\\",\\\"\\\",0,0,0,0,true],[\\\"Function.all\\\",\\\"\\\",0,0,0,0,true]],\\\"props\\\":{\\\"ready\\\":\\\"$34\\\"}}\\n36:{\\\"name\\\":\\\"StreamingMetadataOutletImpl\\\",\\\"key\\\":null,\\\"env\\\":\\\"Server\\\",\\\"stack\\\":[[\\\"Function.all\\\",\\\"\\\",0,0,0,0,true],[\\\"Function.all\\\",\\\"\\\",0,0,0,0,true]],\\\"props\\\":{}}\\n37:[]\\n3a:[]\\n3c:{\\\"name\\\":\\\"NonIndex\\\",\\\"key\\\":null,\\\"env\\\":\\\"Server\\\",\\\"stack\\\":[],\\\"props\\\":{\\\"pagePath\\\":\\\"/_not-found\\\",\\\"statusCode\\\":404,\\\"isPossibleServerAction\\\":false}}\\n3d:[]\\n3f:{\\\"name\\\":\\\"ViewportTree\\\",\\\"key\\\":null,\\\"env\\\":\\\"Server\\\",\\\"stack\\\":[],\\\"props\\\":{}}\\n40:[]\\n43:{\\\"name\\\":\\\"__next_viewport_boundary__\\\",\\\"key\\\":null,\\\"env\\\":\\\"Server\\\",\\\"owner\\\":\\\"$3f\\\",\\\"stack\\\":[],\\\"props\\\":{}}\\n44:[]\\n46:{\\\"name\\\":\\\"MetadataTree\\\",\\\"key\\\":null,\\\"env\\\":\\\"Server\\\",\\\"stack\\\":[],\\\"props\\\":{}}\\n47:[]\\n4a:{\\\"name\\\":\\\"__next_metadata_boundary__\\\",\\\"key\\\":null,\\\"env\\\":\\\"Server\\\",\\\"owner\\\":\\\"$46\\\",\\\"stack\\\":[],\\\"props\\\":{}}\\n4b:[]\\n4c:[]\\n4f:{\\\"name\\\":\\\"MetadataResolver\\\",\\\"key\\\":null,\\\"env\\\":\\\"Server\\\",\\\"owner\\\":\\\"$4a\\\",\\\"stack\\\":[],\\\"props\\\":{}}\\n52:[]\\n53:[]\\n54:[]\\n55:[]\\n1:D\\\"$2\\\"\\n1:null\\nc:D\\\"$d\\\"\\n\"])</script><script>self.__next_f.push([1,\"c:[\\\"$\\\",\\\"html\\\",null,{\\\"lang\\\":\\\"en\\\",\\\"suppressHydrationWarning\\\":true,\\\"children\\\":[\\\"$\\\",\\\"body\\\",null,{\\\"className\\\":\\\"geist_deef94d5-module__Sms4YG__variable geist_mono_8d43a2aa-module__8Li5zG__variable antialiased\\\",\\\"suppressHydrationWarning\\\":true,\\\"children\\\":[\\\"$\\\",\\\"$L17\\\",null,{\\\"children\\\":[\\\"$\\\",\\\"$L19\\\",null,{\\\"parallelRouterKey\\\":\\\"children\\\",\\\"error\\\":\\\"$1a\\\",\\\"errorStyles\\\":[\\\"$\\\",\\\"$L5\\\",null,{\\\"type\\\":\\\"error\\\",\\\"pagePath\\\":\\\"error.tsx\\\",\\\"children\\\":[]},null,\\\"$1b\\\",0],\\\"errorScripts\\\":[[\\\"$\\\",\\\"script\\\",\\\"script-0\\\",{\\\"src\\\":\\\"/_next/static/chunks/node_modules_28fd43de._.js\\\",\\\"async\\\":true},null,\\\"$1c\\\",0],[\\\"$\\\",\\\"script\\\",\\\"script-1\\\",{\\\"src\\\":\\\"/_next/static/chunks/src_app_error_tsx_627a0d75._.js\\\",\\\"async\\\":true},null,\\\"$1d\\\",0],[\\\"$\\\",\\\"script\\\",\\\"script-2\\\",{\\\"src\\\":\\\"/_next/static/chunks/src_app_error_tsx_31e85dbf._.js\\\",\\\"async\\\":true},null,\\\"$1e\\\",0]],\\\"template\\\":[\\\"$\\\",\\\"$L20\\\",null,{},null,\\\"$1f\\\",1],\\\"templateStyles\\\":\\\"$undefined\\\",\\\"templateScripts\\\":\\\"$undefined\\\",\\\"notFound\\\":[\\\"$\\\",\\\"$L5\\\",\\\"c-not-found\\\",{\\\"type\\\":\\\"not-found\\\",\\\"pagePath\\\":\\\"not-found.tsx\\\",\\\"children\\\":[[\\\"$\\\",\\\"$L23\\\",null,{},null,\\\"$22\\\",1],[]]},null,\\\"$21\\\",0],\\\"forbidden\\\":\\\"$undefined\\\",\\\"unauthorized\\\":\\\"$undefined\\\",\\\"segmentViewBoundaries\\\":[[\\\"$\\\",\\\"$L5\\\",null,{\\\"type\\\":\\\"boundary:not-found\\\",\\\"pagePath\\\":\\\"not-found.tsx@boundary\\\"},null,\\\"$24\\\",1],\\\"$undefined\\\",[\\\"$\\\",\\\"$L5\\\",null,{\\\"type\\\":\\\"boundary:error\\\",\\\"pagePath\\\":\\\"error.tsx@boundary\\\"},null,\\\"$25\\\",1],\\\"$undefined\\\"]},null,\\\"$18\\\",1]},\\\"$d\\\",\\\"$16\\\",1]},\\\"$d\\\",\\\"$15\\\",1]},\\\"$d\\\",\\\"$14\\\",1]\\n\"])</script><script>self.__next_f.push([1,\"32:D\\\"$33\\\"\\n35:D\\\"$36\\\"\\n35:[\\\"$\\\",\\\"$L38\\\",null,{\\\"promise\\\":\\\"$@39\\\"},\\\"$36\\\",\\\"$37\\\",1]\\n3b:D\\\"$3c\\\"\\n3b:[\\\"$\\\",\\\"meta\\\",null,{\\\"name\\\":\\\"robots\\\",\\\"content\\\":\\\"noindex\\\"},null,\\\"$3d\\\",1]\\n3e:D\\\"$3f\\\"\\n42:D\\\"$43\\\"\\n3e:[[\\\"$\\\",\\\"$L41\\\",null,{\\\"children\\\":\\\"$L42\\\"},\\\"$3f\\\",\\\"$40\\\",1],[\\\"$\\\",\\\"meta\\\",null,{\\\"name\\\":\\\"next-size-adjust\\\",\\\"content\\\":\\\"\\\"},\\\"$3f\\\",\\\"$44\\\",1]]\\n45:D\\\"$46\\\"\\n49:D\\\"$4a\\\"\\n4e:D\\\"$4f\\\"\\n49:[\\\"$\\\",\\\"div\\\",null,{\\\"hidden\\\":true,\\\"children\\\":[\\\"$\\\",\\\"$4d\\\",null,{\\\"fallback\\\":null,\\\"children\\\":\\\"$L4e\\\"},\\\"$4a\\\",\\\"$4c\\\",1]},\\\"$4a\\\",\\\"$4b\\\",1]\\n45:[\\\"$\\\",\\\"$L48\\\",null,{\\\"children\\\":\\\"$49\\\"},\\\"$46\\\",\\\"$47\\\",1]\\n50:[]\\n\"])</script><script>self.__next_f.push([1,\"0:{\\\"P\\\":\\\"$1\\\",\\\"b\\\":\\\"development\\\",\\\"p\\\":\\\"\\\",\\\"c\\\":[\\\"\\\",\\\"api\\\",\\\"non-existent-endpoint\\\"],\\\"i\\\":false,\\\"f\\\":[[[\\\"\\\",{\\\"children\\\":[\\\"/_not-found\\\",{\\\"children\\\":[\\\"__PAGE__\\\",{}]}]},\\\"$undefined\\\",\\\"$undefined\\\",true],[\\\"\\\",[\\\"$\\\",\\\"$L5\\\",\\\"layout\\\",{\\\"type\\\":\\\"layout\\\",\\\"pagePath\\\":\\\"layout.tsx\\\",\\\"children\\\":[\\\"$\\\",\\\"$7\\\",\\\"c\\\",{\\\"children\\\":[[[\\\"$\\\",\\\"link\\\",\\\"0\\\",{\\\"rel\\\":\\\"stylesheet\\\",\\\"href\\\":\\\"/_next/static/chunks/%5Broot-of-the-server%5D__040b0825._.css\\\",\\\"precedence\\\":\\\"next_static/chunks/[root-of-the-server]__040b0825._.css\\\",\\\"crossOrigin\\\":\\\"$undefined\\\",\\\"nonce\\\":\\\"$undefined\\\"},null,\\\"$8\\\",0],[\\\"$\\\",\\\"script\\\",\\\"script-0\\\",{\\\"src\\\":\\\"/_next/static/chunks/node_modules_a4e9bb56._.js\\\",\\\"async\\\":true,\\\"nonce\\\":\\\"$undefined\\\"},null,\\\"$9\\\",0],[\\\"$\\\",\\\"script\\\",\\\"script-1\\\",{\\\"src\\\":\\\"/_next/static/chunks/src_d65ea02c._.js\\\",\\\"async\\\":true,\\\"nonce\\\":\\\"$undefined\\\"},null,\\\"$a\\\",0],[\\\"$\\\",\\\"script\\\",\\\"script-2\\\",{\\\"src\\\":\\\"/_next/static/chunks/src_app_layout_tsx_f8182b1e._.js\\\",\\\"async\\\":true,\\\"nonce\\\":\\\"$undefined\\\"},null,\\\"$b\\\",0]],\\\"$c\\\"]},null,\\\"$6\\\",1]},null,\\\"$4\\\",0],{\\\"children\\\":[\\\"/_not-found\\\",[\\\"$\\\",\\\"$7\\\",\\\"c\\\",{\\\"children\\\":[null,[\\\"$\\\",\\\"$L19\\\",null,{\\\"parallelRouterKey\\\":\\\"children\\\",\\\"error\\\":\\\"$undefined\\\",\\\"errorStyles\\\":\\\"$undefined\\\",\\\"errorScripts\\\":\\\"$undefined\\\",\\\"template\\\":[\\\"$\\\",\\\"$L20\\\",null,{},null,\\\"$28\\\",1],\\\"templateStyles\\\":\\\"$undefined\\\",\\\"templateScripts\\\":\\\"$undefined\\\",\\\"notFound\\\":\\\"$undefined\\\",\\\"forbidden\\\":\\\"$undefined\\\",\\\"unauthorized\\\":\\\"$undefined\\\",\\\"segmentViewBoundaries\\\":[\\\"$undefined\\\",\\\"$undefined\\\",\\\"$undefined\\\",\\\"$undefined\\\"]},null,\\\"$27\\\",1]]},null,\\\"$26\\\",0],{\\\"children\\\":[\\\"__PAGE__\\\",[\\\"$\\\",\\\"$7\\\",\\\"c\\\",{\\\"children\\\":[[\\\"$\\\",\\\"$L5\\\",\\\"c-page\\\",{\\\"type\\\":\\\"page\\\",\\\"pagePath\\\":\\\"not-found.tsx\\\",\\\"children\\\":[\\\"$\\\",\\\"$L2c\\\",null,{\\\"Component\\\":\\\"$23\\\",\\\"searchParams\\\":{},\\\"params\\\":{}},null,\\\"$2b\\\",1]},null,\\\"$2a\\\",1],[[\\\"$\\\",\\\"script\\\",\\\"script-0\\\",{\\\"src\\\":\\\"/_next/static/chunks/node_modules_cba47906._.js\\\",\\\"async\\\":true,\\\"nonce\\\":\\\"$undefined\\\"},null,\\\"$2d\\\",0],[\\\"$\\\",\\\"script\\\",\\\"script-1\\\",{\\\"src\\\":\\\"/_next/static/chunks/src_app_not-found_tsx_c19c9edf._.js\\\",\\\"async\\\":true,\\\"nonce\\\":\\\"$undefined\\\"},null,\\\"$2e\\\",0],[\\\"$\\\",\\\"script\\\",\\\"script-2\\\",{\\\"src\\\":\\\"/_next/static/chunks/src_app_not-found_tsx_31e85dbf._.js\\\",\\\"async\\\":true,\\\"nonce\\\":\\\"$undefined\\\"},null,\\\"$2f\\\",0]],[\\\"$\\\",\\\"$L31\\\",null,{\\\"children\\\":[\\\"$L32\\\",\\\"$35\\\"]},null,\\\"$30\\\",1]]},null,\\\"$29\\\",0],{},null,false]},null,false]},null,false],[\\\"$\\\",\\\"$7\\\",\\\"h\\\",{\\\"children\\\":[\\\"$3b\\\",\\\"$3e\\\",\\\"$45\\\"]},null,\\\"$3a\\\",0],false]],\\\"m\\\":\\\"$W50\\\",\\\"G\\\":[\\\"$51\\\",\\\"$undefined\\\"],\\\"s\\\":false,\\\"S\\\":false}\\n\"])</script><script>self.__next_f.push([1,\"42:[[\\\"$\\\",\\\"meta\\\",\\\"0\\\",{\\\"charSet\\\":\\\"utf-8\\\"},\\\"$33\\\",\\\"$52\\\",0],[\\\"$\\\",\\\"meta\\\",\\\"1\\\",{\\\"name\\\":\\\"viewport\\\",\\\"content\\\":\\\"width=device-width, initial-scale=1\\\"},\\\"$33\\\",\\\"$53\\\",0]]\\n32:null\\n39:{\\\"metadata\\\":[[\\\"$\\\",\\\"title\\\",\\\"0\\\",{\\\"children\\\":\\\"Nomado Breeze\\\"},\\\"$36\\\",\\\"$54\\\",0],[\\\"$\\\",\\\"meta\\\",\\\"1\\\",{\\\"name\\\":\\\"description\\\",\\\"content\\\":\\\"Work where the breeze takes you\\\"},\\\"$36\\\",\\\"$55\\\",0]],\\\"error\\\":null,\\\"digest\\\":\\\"$undefined\\\"}\\n4e:\\\"$39:metadata\\\"\\n\"])</script></body></html>",
+        "timestamp": "2025-09-27T11:14:07.897Z"
+      },
+      "expected": {
+        "status": [
+          404
+        ]
+      },
+      "passed": true
+    }
+  ]
+}

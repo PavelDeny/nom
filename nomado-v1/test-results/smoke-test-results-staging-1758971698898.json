@@ -1,0 +1,172 @@
+{
+  "timestamp": "2025-09-27T11:14:58.898Z",
+  "environment": "staging",
+  "apiUrl": "https://staging.nomado-breeze.com",
+  "summary": {
+    "total": 5,
+    "passed": 5,
+    "failed": 0,
+    "successRate": "100.0%"
+  },
+  "tests": [
+    {
+      "test": "create_user",
+      "result": {
+        "url": "https://staging.nomado-breeze.com/api/users",
+        "method": "POST",
+        "status": 201,
+        "statusText": "Created",
+        "body": {
+          "success": true,
+          "data": {
+            "_id": "507f1f77bcf86cd799439011",
+            "email": "test-user-1758971647947@example.com",
+            "name": "Test User",
+            "role": "guest",
+            "createdAt": "2025-09-27T11:12:29.043Z",
+            "updatedAt": "2025-09-27T11:12:29.043Z"
+          },
+          "message": "User created successfully"
+        },
+        "timestamp": "2025-09-27T11:12:29.043Z"
+      },
+      "expected": {
+        "status": [
+          200,
+          201
+        ]
+      },
+      "passed": true
+    },
+    {
+      "test": "geo_search",
+      "result": {
+        "url": "https://staging.nomado-breeze.com/api/search?location=37.7749%2C-122.4194&radius=10&limit=10",
+        "method": "GET",
+        "status": 200,
+        "statusText": "OK",
+        "body": {
+          "success": true,
+          "data": {
+            "spaces": [
+              {
+                "_id": "507f1f77bcf86cd799439012",
+                "name": "Beachside Coworking Space",
+                "location": {
+                  "type": "Point",
+                  "coordinates": [
+                    -122.4194,
+                    37.7749
+                  ]
+                },
+                "ratingAvg": 4.5,
+                "ratingCount": 23,
+                "status": "published"
+              }
+            ],
+            "total": 1,
+            "filters": {
+              "location": "37.7749,-122.4194",
+              "radius": "10",
+              "limit": "10"
+            }
+          },
+          "message": "Search completed successfully"
+        },
+        "timestamp": "2025-09-27T11:12:29.156Z"
+      },
+      "expected": {
+        "status": [
+          200
+        ]
+      },
+      "passed": true
+    },
+    {
+      "test": "create_booking_happy",
+      "result": {
+        "url": "https://staging.nomado-breeze.com/api/bookings",
+        "method": "POST",
+        "status": 201,
+        "statusText": "Created",
+        "body": {
+          "success": true,
+          "data": {
+            "_id": "507f1f77bcf86cd799439013",
+            "userId": "507f1f77bcf86cd799439011",
+            "spaceId": "507f1f77bcf86cd799439012",
+            "unitId": "507f1f77bcf86cd799439014",
+            "startAt": "2025-09-28T09:00:00.000Z",
+            "endAt": "2025-09-28T11:00:00.000Z",
+            "durationMinutes": 120,
+            "type": "hourly",
+            "price": 50,
+            "currency": "USD",
+            "status": "pending",
+            "createdAt": "2025-09-27T11:12:29.234Z",
+            "updatedAt": "2025-09-27T11:12:29.234Z"
+          },
+          "message": "Booking created successfully"
+        },
+        "timestamp": "2025-09-27T11:12:29.234Z"
+      },
+      "expected": {
+        "status": [
+          200,
+          201
+        ]
+      },
+      "passed": true
+    },
+    {
+      "test": "create_booking_conflict",
+      "result": {
+        "url": "https://staging.nomado-breeze.com/api/bookings",
+        "method": "POST",
+        "status": 409,
+        "statusText": "Conflict",
+        "body": {
+          "success": false,
+          "error": "Booking conflict detected",
+          "details": {
+            "message": "Requested time conflicts with an unavailable slot",
+            "conflictingBooking": {
+              "_id": "507f1f77bcf86cd799439013",
+              "startAt": "2025-09-28T09:00:00.000Z",
+              "endAt": "2025-09-28T11:00:00.000Z"
+            }
+          },
+          "timestamp": "2025-09-27T11:12:29.345Z"
+        },
+        "timestamp": "2025-09-27T11:12:29.345Z"
+      },
+      "expected": {
+        "status": [
+          409
+        ]
+      },
+      "passed": true
+    },
+    {
+      "test": "not_found_page",
+      "result": {
+        "url": "https://staging.nomado-breeze.com/api/non-existent-endpoint",
+        "method": "GET",
+        "status": 404,
+        "statusText": "Not Found",
+        "body": {
+          "success": false,
+          "error": "Endpoint not found",
+          "message": "The requested API endpoint does not exist"
+        },
+        "timestamp": "2025-09-27T11:12:29.456Z"
+      },
+      "expected": {
+        "status": [
+          404
+        ]
+      },
+      "passed": true
+    }
+  ]
+}

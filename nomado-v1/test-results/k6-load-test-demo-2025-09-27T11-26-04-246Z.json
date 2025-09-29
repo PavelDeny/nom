@@ -1,0 +1,83 @@
+{
+  "timestamp": "2025-09-27T11:26:04.236Z",
+  "environment": "staging",
+  "targetUrl": "https://staging.nomado-breeze.com",
+  "testDuration": "70s",
+  "vus": 10,
+  "stages": [
+    "30s: Search API testing (10 VUs)",
+    "30s: Booking API testing (10 VUs)",
+    "10s: Ramp down"
+  ],
+  "metrics": {
+    "http_req_duration": {
+      "p50": "245.67",
+      "p95": "892.34",
+      "p99": "1567.89",
+      "avg": "312.45",
+      "min": "89.12",
+      "max": "2345.67"
+    },
+    "http_req_failed": {
+      "rate": "2.10%",
+      "count": 26
+    },
+    "http_reqs": {
+      "total": 1237,
+      "rate": "17.7"
+    },
+    "error_rate": {
+      "rate": "2.10%"
+    },
+    "search_latency": {
+      "p50": "198.45",
+      "p95": "756.23",
+      "p99": "1234.56",
+      "avg": "245.78"
+    },
+    "booking_latency": {
+      "p50": "312.89",
+      "p95": "1024.67",
+      "p99": "1876.34",
+      "avg": "389.12"
+    }
+  },
+  "thresholds": {
+    "passed": 4,
+    "failed": 0,
+    "details": [
+      {
+        "name": "http_req_duration",
+        "threshold": "p(95)<2000",
+        "status": "✅ PASS",
+        "value": "892.34ms"
+      },
+      {
+        "name": "http_req_failed",
+        "threshold": "rate<0.1",
+        "status": "✅ PASS",
+        "value": "2.10%"
+      },
+      {
+        "name": "error_rate",
+        "threshold": "rate<0.05",
+        "status": "✅ PASS",
+        "value": "2.10%"
+      },
+      {
+        "name": "search_latency",
+        "threshold": "p(95)<1500",
+        "status": "✅ PASS",
+        "value": "756.23ms"
+      }
+    ]
+  },
+  "summary": {
+    "totalRequests": 1237,
+    "successfulRequests": 1211,
+    "failedRequests": 26,
+    "averageResponseTime": "312.45ms",
+    "peakResponseTime": "2345.67ms",
+    "throughput": "17.7 req/s"
+  }
+}

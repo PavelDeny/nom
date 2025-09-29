@@ -1,0 +1,113 @@
+{
+  "timestamp": "2025-09-27T12:44:39.976Z",
+  "testConfig": {
+    "targetUrl": "http://localhost:3000/api/bookings",
+    "concurrentRequests": 10,
+    "payload": {
+      "userId": "507f1f77bcf86cd799439011",
+      "spaceId": "507f1f77bcf86cd799439012",
+      "unitId": "507f1f77bcf86cd799439013",
+      "startAt": "2025-09-28T10:00:00.000Z",
+      "endAt": "2025-09-28T12:00:00.000Z",
+      "slot": {
+        "startAt": "2025-09-28T10:00:00.000Z",
+        "endAt": "2025-09-28T12:00:00.000Z",
+        "available": true
+      },
+      "durationMinutes": 120,
+      "type": "hourly",
+      "price": 50,
+      "currency": "USD",
+      "status": "pending"
+    }
+  },
+  "executionTime": 3066,
+  "statistics": {
+    "total": 10,
+    "successful": 10,
+    "conflicts": 0,
+    "errors": 0,
+    "successRate": "100.0%",
+    "conflictRate": "0.0%",
+    "errorRate": "0.0%"
+  },
+  "responseTimes": {
+    "average": 2863.9,
+    "min": 2745,
+    "max": 2981,
+    "p50": 2856,
+    "p95": 2981
+  },
+  "responses": [
+    {
+      "requestId": 1,
+      "status": 201,
+      "responseTime": 2981,
+      "body": "{\"success\":true,\"data\":{\"message\":\"Slot available (placeholder)\"},\"message\":\"Booking slot validated successfully\"}",
+      "timestamp": "2025-09-27T12:44:39.776Z"
+    },
+    {
+      "requestId": 2,
+      "status": 201,
+      "responseTime": 2981,
+      "body": "{\"success\":true,\"data\":{\"message\":\"Slot available (placeholder)\"},\"message\":\"Booking slot validated successfully\"}",
+      "timestamp": "2025-09-27T12:44:39.861Z"
+    },
+    {
+      "requestId": 3,
+      "status": 201,
+      "responseTime": 2798,
+      "body": "{\"success\":true,\"data\":{\"message\":\"Slot available (placeholder)\"},\"message\":\"Booking slot validated successfully\"}",
+      "timestamp": "2025-09-27T12:44:39.680Z"
+    },
+    {
+      "requestId": 4,
+      "status": 201,
+      "responseTime": 2856,
+      "body": "{\"success\":true,\"data\":{\"message\":\"Slot available (placeholder)\"},\"message\":\"Booking slot validated successfully\"}",
+      "timestamp": "2025-09-27T12:44:39.744Z"
+    },
+    {
+      "requestId": 5,
+      "status": 201,
+      "responseTime": 2937,
+      "body": "{\"success\":true,\"data\":{\"message\":\"Slot available (placeholder)\"},\"message\":\"Booking slot validated successfully\"}",
+      "timestamp": "2025-09-27T12:44:39.827Z"
+    },
+    {
+      "requestId": 6,
+      "status": 201,
+      "responseTime": 2808,
+      "body": "{\"success\":true,\"data\":{\"message\":\"Slot available (placeholder)\"},\"message\":\"Booking slot validated successfully\"}",
+      "timestamp": "2025-09-27T12:44:39.699Z"
+    },
+    {
+      "requestId": 7,
+      "status": 201,
+      "responseTime": 2745,
+      "body": "{\"success\":true,\"data\":{\"message\":\"Slot available (placeholder)\"},\"message\":\"Booking slot validated successfully\"}",
+      "timestamp": "2025-09-27T12:44:39.637Z"
+    },
+    {
+      "requestId": 8,
+      "status": 201,
+      "responseTime": 2951,
+      "body": "{\"success\":true,\"data\":{\"message\":\"Slot available (placeholder)\"},\"message\":\"Booking slot validated successfully\"}",
+      "timestamp": "2025-09-27T12:44:39.844Z"
+    },
+    {
+      "requestId": 9,
+      "status": 201,
+      "responseTime": 2762,
+      "body": "{\"success\":true,\"data\":{\"message\":\"Slot available (placeholder)\"},\"message\":\"Booking slot validated successfully\"}",
+      "timestamp": "2025-09-27T12:44:39.656Z"
+    },
+    {
+      "requestId": 10,
+      "status": 201,
+      "responseTime": 2820,
+      "body": "{\"success\":true,\"data\":{\"message\":\"Slot available (placeholder)\"},\"message\":\"Booking slot validated successfully\"}",
+      "timestamp": "2025-09-27T12:44:39.717Z"
+    }
+  ]
+}

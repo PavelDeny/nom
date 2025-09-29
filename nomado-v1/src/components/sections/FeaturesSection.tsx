@@ -1,0 +1,68 @@
+// components/sections/FeaturesSection.tsx
+"use client";
+
+import { FeatureCard } from "@/components/ui/feature-card";
+import { defaultFeatures, type Feature } from "@/lib/data/features";
+
+export interface FeaturesSectionProps {
+  title?: string;
+  subtitle?: string;
+  features?: Feature[];
+}
+
+// === Компонент ===
+export function FeaturesSection({
+  title = "Everything You Need to Work & Thrive",
+  subtitle = "Premium amenities, professional equipment, and exclusive services designed for the modern digital nomad",
+  features = defaultFeatures,
+}: FeaturesSectionProps) {
+  return (
+    <section
+      id="features"
+      style={{
+        background: "linear-gradient(to bottom, #E0F7F3, #FFF4E6)",
+        padding: "4rem 0",
+      }}
+    >
+      <div className="container mx-auto px-4">
+        <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+          <h2
+            style={{
+              fontSize: "2.5rem",
+              fontWeight: "bold",
+              color: "#2D5B4C",
+              marginBottom: "1rem",
+            }}
+          >
+            {title}
+          </h2>
+          <p
+            style={{
+              fontSize: "1.125rem",
+              color: "#2D5B4C",
+              maxWidth: "700px",
+              margin: "0 auto",
+            }}
+          >
+            {subtitle}
+          </p>
+        </div>
+
+        {/* === Грид-макет: 2x3 === */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(3, 1fr)",
+            gap: "2rem",
+            maxWidth: "1200px",
+            margin: "0 auto",
+          }}
+        >
+          {features.map((feature) => (
+            <FeatureCard key={feature.id} {...feature} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
